@@ -53,15 +53,46 @@ class LinkedList {
   /** pop(): return & remove last item. */
 
   pop() {
+    let currNode = this.head
+    let lastNode = this.tail
 
+    if (currNode === lastNode) {
+      this.head = null
+      this.tail = null
+      this.length -= 1
+      return currNode.val
+    }
+
+    while (currNode.next) {
+      if (currNode.next === this.tail) {
+        currNode.next = null
+        this.tail = currNode
+      } else {
+        currNode = currNode.next
+      }
+    }
 
     this.length -= 1
+
+    return lastNode.val
   }
 
   /** shift(): return & remove first item. */
 
   shift() {
+    let originalHead = this.head
 
+    if (this.head === this.tail) {
+      this.head = null
+      this.tail = null
+      this.length -= 1
+      return originalHead.val
+    }
+
+    this.head = originalHead.next
+    this.length -= 1
+
+    return originalHead.val
   }
 
   /** getAt(idx): get val at idx. */
