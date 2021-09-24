@@ -134,13 +134,46 @@ class LinkedList {
   /** insertAt(idx, val): add node w/val before idx. */
 
   insertAt(idx, val) {
+    const newNode = new Node(val)
+    let currNode = this.head
+    let lastNode = this.tail
 
+    if(!this.head) {
+      this.head = newNode
+      this.tail = newNode
+      this.length += 1
+      return
+    }
+
+    if (idx === 0) {
+      newNode.next = currNode
+      this.head = newNode
+      this.length += 1
+      return
+    }
+
+    if (idx === this.length) {
+      lastNode.next = newNode
+      this.tail = newNode
+      this.length += 1
+      return
+    }
+
+    for (let i = 0; i <= idx - 2; i++) {
+      if (currNode.next) {
+        currNode = currNode.next
+      }
+    }
+
+    newNode.next = currNode.next
+    currNode.next = newNode
+    this.length += 1
   }
 
   /** removeAt(idx): return & remove item at idx, */
 
   removeAt(idx) {
-
+    
   }
 
   /** average(): return an average of all values in the list */
