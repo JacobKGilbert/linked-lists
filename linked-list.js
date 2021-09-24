@@ -173,7 +173,30 @@ class LinkedList {
   /** removeAt(idx): return & remove item at idx, */
 
   removeAt(idx) {
-    
+    let currNode = this.head
+
+    if(!this.head) return
+
+    if (idx === 0) {
+      if (this.head === this.tail) {
+        this.head = null
+        this.tail = null
+      } else {
+        this.head = currNode.next
+      }
+      this.length -= 1
+      return currNode.val
+    }
+
+    for (let i = 0; i <= idx - 2; i++) {
+      if (currNode.next) {
+        currNode = currNode.next
+      }
+    }
+
+    currNode.next = currNode.next.next
+    this.length -= 1
+    return currNode.val
   }
 
   /** average(): return an average of all values in the list */
