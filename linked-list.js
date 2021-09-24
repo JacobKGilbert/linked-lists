@@ -21,19 +21,41 @@ class LinkedList {
   /** push(val): add new value to end of list. */
 
   push(val) {
+    const newNode = new Node(val)
 
+    if(!this.head) {
+      this.head = newNode
+      this.tail = newNode
+    } else {
+      this.tail.next = newNode
+      this.tail = newNode
+    }
+
+    this.length += 1
   }
 
   /** unshift(val): add new value to start of list. */
 
   unshift(val) {
+    const newHead = new Node(val)
 
+    if (!this.head) {
+      this.head = newHead
+      this.tail = newHead
+    } else {
+      newHead.next = this.head
+      this.head = newHead
+    }
+
+    this.length += 1
   }
 
   /** pop(): return & remove last item. */
 
   pop() {
 
+
+    this.length -= 1
   }
 
   /** shift(): return & remove first item. */
