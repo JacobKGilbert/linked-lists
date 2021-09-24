@@ -98,13 +98,37 @@ class LinkedList {
   /** getAt(idx): get val at idx. */
 
   getAt(idx) {
+    let currNode = this.head
 
+    if (idx === 0) {
+      return currNode.val
+    }
+
+    for (let i = 0; i <= idx; i++) {
+      if (currNode.next) {
+        currNode = currNode.next
+      }
+    }
+
+    return currNode.val
   }
 
   /** setAt(idx, val): set val at idx to val */
 
   setAt(idx, val) {
+    let currNode = this.head
 
+    if (idx === 0) {
+      currNode.val = val
+    }
+
+    for (let i = 0; i <= idx; i++) {
+      if (currNode.next) {
+        currNode = currNode.next
+      }
+    }
+
+    currNode.val = val
   }
 
   /** insertAt(idx, val): add node w/val before idx. */
